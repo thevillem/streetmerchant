@@ -19,7 +19,7 @@ export function sendTweet(link: Link, store: Store) {
     twitter.consumerKey &&
     twitter.consumerSecret
   ) {
-    logger.debug('↗ sending twitter message');
+    logger.debug('sending twitter message');
 
     let status = `${Print.inStock(link, store)}\n${
       link.cartUrl ? link.cartUrl : link.url
@@ -31,9 +31,9 @@ export function sendTweet(link: Link, store: Store) {
 
     client.post('statuses/update', {status}, error => {
       if (error) {
-        logger.error("✖ couldn't send twitter notification", error);
+        logger.error("couldn't send twitter notification", error);
       } else {
-        logger.info('✔ twitter notification sent');
+        logger.info('twitter notification sent');
       }
     });
   }

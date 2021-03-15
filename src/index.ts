@@ -107,7 +107,7 @@ async function loopMain() {
     await main();
   } catch (error: unknown) {
     logger.error(
-      '✖ something bad happened, resetting streetmerchant in 5 seconds',
+      'something bad happened, resetting streetmerchant in 5 seconds',
       error
     );
     setTimeout(loopMain, 5000);

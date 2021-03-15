@@ -6,5 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: streetmerchant
+    restart: unless-stopped
     env_file:
       - dotenv

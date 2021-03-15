@@ -32,13 +32,13 @@ export function updateRedis(link: Link, store: Store) {
       const redisUpdated = client.set(key, JSON.stringify(value));
 
       if (redisUpdated) {
-        logger.info('✔ redis updated');
+        logger.info('redis updated');
       } else {
-        logger.error(`✖ couldn't update redis for key (${key})`);
+        logger.error(`couldn't update redis for key (${key})`);
       }
     }
   } catch (error: unknown) {
-    logger.error("✖ couldn't update redis", error);
+    logger.error("couldn't update redis", error);
   }
 }
 

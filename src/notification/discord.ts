@@ -20,7 +20,7 @@ function getIdAndToken(webhook: string) {
 
 export function sendDiscordMessage(link: Link, store: Store) {
   if (webhooks.length > 0) {
-    logger.debug('↗ sending discord message');
+    logger.debug('sending discord message');
 
     (async () => {
       try {
@@ -72,9 +72,9 @@ export function sendDiscordMessage(link: Link, store: Store) {
 
         (await Promise.all(promises)).forEach(({client}) => client.destroy());
 
-        logger.info('✔ discord message sent');
+        logger.info('discord message sent');
       } catch (error: unknown) {
-        logger.error("✖ couldn't send discord message", error);
+        logger.error("couldn't send discord message", error);
       }
     })();
   }

@@ -7,7 +7,7 @@ import {usingResponse} from '../util';
 
 function addNewLinks(store: Store, links: Link[], series: Series) {
   if (links.length === 0) {
-    logger.debug(Print.message('NO STORE LINKS FOUND', series, store, true));
+    logger.debug(Print.message('NO STORE LINKS FOUND', series, store));
 
     return;
   }
@@ -20,7 +20,7 @@ function addNewLinks(store: Store, links: Link[], series: Series) {
   }
 
   logger.debug(
-    Print.message(`FOUND ${newLinks.length} STORE LINKS`, series, store, true)
+    Print.message(`FOUND ${newLinks.length} STORE LINKS`, series, store)
   );
   logger.debug(JSON.stringify(newLinks, null, 2));
 
@@ -40,7 +40,7 @@ export async function fetchLinks(store: Store, browser: Browser) {
       continue;
     }
 
-    logger.debug(Print.message('DETECTING STORE LINKS', series, store, true));
+    logger.debug(Print.message('DETECTING STORE LINKS', series, store));
 
     if (!Array.isArray(url)) {
       url = [url];
@@ -52,7 +52,7 @@ export async function fetchLinks(store: Store, browser: Browser) {
           const text = await response?.text();
 
           if (!text) {
-            logger.error(Print.message('NO RESPONSE', series, store, true));
+            logger.error(Print.message('NO RESPONSE', series, store));
             return;
           }
 

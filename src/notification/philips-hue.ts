@@ -32,7 +32,7 @@ const adjustLightsWithAPI = (hueBridge: Api) => {
     if (rgbArray.length === 3) {
       lightState.rgb(rgbArray[0], rgbArray[1], rgbArray[2]);
     } else {
-      logger.debug('✖ Error assigning RGB Values');
+      logger.debug('Error assigning RGB Values');
     }
   }
 
@@ -82,7 +82,7 @@ const adjustLightsWithAPI = (hueBridge: Api) => {
 export function adjustPhilipsHueLights() {
   // Check if the required variables have been set
   if (apiKey && bridgeIp) {
-    logger.info('↗ adjusting Philips Hue lights over LAN');
+    logger.info('adjusting Philips Hue lights over LAN');
     (async () => {
       logger.debug(
         'Attempting to connect to Philips Hue bridge at ' + bridgeIp
@@ -93,15 +93,15 @@ export function adjustPhilipsHueLights() {
         .then(
           hueBridge => {
             adjustLightsWithAPI(hueBridge);
-            logger.info('✔ adjusted Philips Hue lights over LAN');
+            logger.info('adjusted Philips Hue lights over LAN');
           },
           (error: Error) => {
-            logger.error("✖ couldn't adjust hue lights.", error);
+            logger.error("couldn't adjust hue lights.", error);
           }
         );
     })();
   } else if (apiKey && clientId && clientSecret) {
-    logger.info('↗ adjusting Philips Hue lights over cloud');
+    logger.info('adjusting Philips Hue lights over cloud');
     (async () => {
       logger.debug('Attempting to connect to Philips Hue bridge over cloud');
       const remoteBootstrap = hueAPI.api.createRemote(clientId, clientSecret);
@@ -111,7 +111,7 @@ export function adjustPhilipsHueLights() {
           .then(
             hueBridge => {
               adjustLightsWithAPI(hueBridge);
-              logger.info('✔ adjusted Philips Hue lights over cloud');
+              logger.info('adjusted Philips Hue lights over cloud');
             },
             (error: Error) => {
               logger.error(

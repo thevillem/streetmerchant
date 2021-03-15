@@ -203,6 +203,11 @@ const docker = envOrBoolean(process.env.DOCKER, false);
 
 const logLevel = envOrString(process.env.LOG_LEVEL, 'info');
 
+const aws = {
+  logGroupName : envOrString(process.env.AWS_LOG_GROUP_NAME, '/aws/streetmerchant/'),
+  awsRegion: envOrString(process.env.AWS_REGION, 'us-east-1')
+}
+
 const notifications = {
   desktop: process.env.DESKTOP_NOTIFICATIONS === 'true',
   discord: {
@@ -466,6 +471,7 @@ export const config = {
   proxy,
   store,
   restartTime,
+  aws,
 };
 
 export function setConfig(newConfig: any) {

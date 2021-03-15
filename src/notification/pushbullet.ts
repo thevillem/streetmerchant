@@ -7,7 +7,7 @@ const {pushbullet} = config.notifications;
 
 export function sendPushbulletNotification(link: Link, store: Store) {
   if (pushbullet) {
-    logger.debug('↗ sending pushbullet message');
+    logger.debug('sending pushbullet message');
 
     const pusher = new PushBullet(pushbullet);
 
@@ -17,9 +17,9 @@ export function sendPushbulletNotification(link: Link, store: Store) {
       link.cartUrl ? link.cartUrl : link.url,
       (error: Error) => {
         if (error) {
-          logger.error("✖ couldn't send pushbullet message", error);
+          logger.error("couldn't send pushbullet message", error);
         } else {
-          logger.info('✔ pushbullet message sent');
+          logger.info('pushbullet message sent');
         }
       }
     );

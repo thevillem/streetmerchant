@@ -8,13 +8,13 @@ const {email, phone} = config.notifications;
 
 if (phone.number.length > 0 && (!email.username || !email.password)) {
   logger.warn(
-    '✖ in order to receive sms alerts, email notifications must also be configured'
+    'in order to receive sms alerts, email notifications must also be configured'
   );
 }
 
 if (phone.carrier.length !== phone.number.length) {
   logger.warn(
-    '✖ the number of carriers must match the number of phone numbers',
+    'the number of carriers must match the number of phone numbers',
     {carrier: phone.carrier, number: phone.number}
   );
 }
@@ -29,19 +29,19 @@ export function sendSms(link: Link, store: Store) {
     const currentCarrier = phone.carrier[i];
 
     if (!currentNumber) {
-      logger.error(`✖ ${currentCarrier} is not associated with a number`);
+      logger.error(`${currentCarrier} is not associated with a number`);
       continue;
     } else if (!currentCarrier) {
-      logger.error(`✖ ${currentNumber} is not associated with a carrier`);
+      logger.error(`${currentNumber} is not associated with a carrier`);
       continue;
     }
 
     if (!phone.availableCarriers.has(currentCarrier)) {
-      logger.error(`✖ unknown carrier ${currentCarrier}`);
+      logger.error(`unknown carrier ${currentCarrier}`);
       continue;
     }
 
-    logger.debug('↗ sending sms');
+    logger.debug('sending sms');
 
     const mailOptions: Mail.Options = {
       attachments: link.screenshot
@@ -53,7 +53,7 @@ export function sendSms(link: Link, store: Store) {
           ]
         : undefined,
       from: email.username,
-      subject: Print.inStock(link, store, false, true),
+      subject: Print.inStock(link, store, false),
       text: link.cartUrl ? link.cartUrl : link.url,
       to: generateAddress(currentNumber, currentCarrier),
     };
@@ -61,11 +61,11 @@ export function sendSms(link: Link, store: Store) {
     transporter.sendMail(mailOptions, error => {
       if (error) {
         logger.error(
-          `✖ couldn't send sms to ${currentNumber} for carrier ${currentCarrier}`,
+          `couldn't send sms to ${currentNumber} for carrier ${currentCarrier}`,
           error
         );
       } else {
-        logger.info('✔ sms sent');
+        logger.info('sms sent');
       }
     });
   }

@@ -11,7 +11,7 @@ const client = new TelegramClient({
 
 export function sendTelegramMessage(link: Link, store: Store) {
   if (telegram.accessToken && telegram.chatId) {
-    logger.debug('↗ sending telegram message');
+    logger.debug('sending telegram message');
 
     (async () => {
       const message = Print.productInStock(link);
@@ -25,9 +25,9 @@ export function sendTelegramMessage(link: Link, store: Store) {
               `${Print.inStock(link, store)}\n${message}`
             )
           );
-          logger.info('✔ telegram message sent');
+          logger.info('telegram message sent');
         } catch (error: unknown) {
-          logger.error("✖ couldn't send telegram message", error);
+          logger.error("couldn't send telegram message", error);
         }
       }
 

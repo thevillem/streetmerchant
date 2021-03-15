@@ -108,10 +108,10 @@ export const Asus: Store = {
     },
     {
       brand: 'asus',
-      itemNumber: '202012AM220000002',
+      itemNumber: '202009AM290000002',
       model: 'strix oc',
       series: '3080',
-      url: 'https://store.asus.com/us/item/202012AM220000002',
+      url: 'https://store.asus.com/us/item/202009AM290000002',
     },
     {
       brand: 'asus',

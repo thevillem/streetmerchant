@@ -27,7 +27,7 @@ export const transporter = nodemailer.createTransport({
 
 export function sendEmail(link: Link, store: Store) {
   if (email.username && (email.password || email.smtpAddress)) {
-    logger.debug('↗ sending email');
+    logger.debug('sending email');
 
     const mailOptions: Mail.Options = {
       attachments: link.screenshot
@@ -46,9 +46,9 @@ export function sendEmail(link: Link, store: Store) {
 
     transporter.sendMail(mailOptions, error => {
       if (error) {
-        logger.error("✖ couldn't send email", error);
+        logger.error("couldn't send email", error);
       } else {
-        logger.info('✔ email sent');
+        logger.info('email sent');
       }
     });
   }

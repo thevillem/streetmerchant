@@ -7,7 +7,7 @@ const pd = new PDClient('');
 
 export function sendPagerDutyNotification(link: Link, store: Store) {
   if (config.notifications.pagerduty.integrationKey) {
-    logger.debug('↗ sending pagerduty message');
+    logger.debug('sending pagerduty message');
     const links = [{href: link.url, text: 'Visit Store'}];
     if (link.cartUrl) {
       links.push({

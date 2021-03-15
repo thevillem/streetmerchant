@@ -8,7 +8,7 @@ const {desktop} = config.notifications;
 
 export function sendDesktopNotification(link: Link, store: Store) {
   if (desktop) {
-    logger.debug('↗ sending desktop notification');
+    logger.debug('sending desktop notification');
     (async () => {
       notifier.notify({
         icon: join(
@@ -20,7 +20,7 @@ export function sendDesktopNotification(link: Link, store: Store) {
         title: Print.inStock(link, store),
       });
 
-      logger.info('✔ desktop notification sent');
+      logger.info('desktop notification sent');
     })();
   }
 }

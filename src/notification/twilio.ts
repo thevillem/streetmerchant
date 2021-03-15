@@ -12,7 +12,7 @@ if (twilio.accountSid && twilio.authToken) {
 
 export function sendTwilioMessage(link: Link, store: Store) {
   if (client) {
-    logger.debug('↗ sending twilio message');
+    logger.debug('sending twilio message');
 
     (async () => {
       const givenUrl = link.cartUrl ? link.cartUrl : link.url;
@@ -28,9 +28,9 @@ export function sendTwilioMessage(link: Link, store: Store) {
               to: number,
             })
           );
-          logger.info('✔ twilio message sent');
+          logger.info('twilio message sent');
         } catch (error: unknown) {
-          logger.error("✖ couldn't send twilio message", error);
+          logger.error("couldn't send twilio message", error);
         }
       }
 

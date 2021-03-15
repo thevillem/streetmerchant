@@ -64,9 +64,9 @@ chatClient.onJoin((channel: string, user: string) => {
       if (message !== undefined) {
         try {
           void chatClient.say(channel, message);
-          logger.info('✔ twitch message sent');
+          logger.info('twitch message sent');
         } catch (error: unknown) {
-          logger.error("✖ couldn't send twitch message", error);
+          logger.error("couldn't send twitch message", error);
         }
       }
     }
@@ -87,7 +87,7 @@ export function sendTwitchMessage(link: Link, store: Store) {
     twitch.clientSecret &&
     tokenData.refreshToken
   ) {
-    logger.debug('↗ sending twitch message');
+    logger.debug('sending twitch message');
 
     messages.push(
       `${Print.inStock(link, store)}\n${link.cartUrl ? link.cartUrl : link.url}`

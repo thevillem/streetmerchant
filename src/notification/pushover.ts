@@ -7,7 +7,7 @@ const {pushover} = config.notifications;
 
 export function sendPushoverNotification(link: Link, store: Store) {
   if (pushover.token && pushover.username) {
-    logger.debug('↗ sending pushover message');
+    logger.debug('sending pushover message');
 
     const push = new Push({
       token: pushover.token,
@@ -33,9 +33,9 @@ export function sendPushoverNotification(link: Link, store: Store) {
 
     push.send(message, (error: Error) => {
       if (error) {
-        logger.error("✖ couldn't send pushover message", error);
+        logger.error("couldn't send pushover message", error);
       } else {
-        logger.info('✔ pushover message sent');
+        logger.info('pushover message sent');
       }
     });
   }

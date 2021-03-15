@@ -177,7 +177,7 @@ async function lookup(browser: Browser, store: Store) {
     }
 
     if (config.page.inStockWaitTime && inStock[link.url]) {
-      logger.info(Print.inStockWaiting(link, store, true));
+      logger.info(Print.inStockWaiting(link, store));
       continue;
     }
 
@@ -259,13 +259,13 @@ async function lookup(browser: Browser, store: Store) {
           store.proxyList.length
         }`;
         logger.error(
-          `✖ [${proxy}] [${store.name}] ${link.brand} ${link.series} ${
+          `[${proxy}] [${store.name}] ${link.brand} ${link.series} ${
             link.model
           } - ${(error as Error).message}`
         );
       } else {
         logger.error(
-          `✖ [${store.name}] ${link.brand} ${link.series} ${link.model} - ${
+          `[${store.name}] ${link.brand} ${link.series} ${link.model} - ${
             (error as Error).message
           }`
         );
@@ -350,18 +350,18 @@ async function handleResponse(
   recursionDepth = 0
 ) {
   if (!response) {
-    logger.debug(Print.noResponse(link, store, true));
+    logger.debug(Print.noResponse(link, store));
   }
 
   const successStatusCodes = store.successStatusCodes ?? [[0, 399]];
   let statusCode = response?.status() ?? 0;
   if (!isStatusCodeInRange(statusCode, successStatusCodes)) {
     if (statusCode === 429) {
-      logger.warn(Print.rateLimit(link, store, true));
+      logger.warn(Print.rateLimit(link, store));
     } else if (statusCode === 503) {
       if (await checkIsCloudflare(store, page, link)) {
         if (recursionDepth > 4) {
-          logger.warn(Print.recursionLimit(link, store, true));
+          logger.warn(Print.recursionLimit(link, store));
         } else {
           const response: HTTPResponse | null = await page.waitForNavigation({
             waitUntil: 'networkidle0',
@@ -377,10 +377,10 @@ async function handleResponse(
           );
         }
       } else {
-        logger.warn(Print.badStatusCode(link, store, statusCode, true));
+        logger.warn(Print.badStatusCode(link, store, statusCode));
       }
     } else {
-      logger.warn(Print.badStatusCode(link, store, statusCode, true));
+      logger.warn(Print.badStatusCode(link, store, statusCode));
     }
   }
 
@@ -400,7 +400,7 @@ async function checkIsCloudflare(store: Store, page: Page, link: Link) {
   };
 
   if (await pageIncludesLabels(page, cloudflareLabel, baseOptions)) {
-    logger.warn(Print.cloudflare(link, store, true));
+    logger.warn(Print.cloudflare(link, store));
     return true;
   }
 
@@ -416,7 +416,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
 
   if (store.labels.captcha) {
     if (await pageIncludesLabels(page, store.labels.captcha, baseOptions)) {
-      logger.warn(Print.captcha(link, store, true));
+      logger.warn(Print.captcha(link, store));
       await delay(getSleepTime(store));
       return false;
     }
@@ -426,14 +426,14 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     if (
       await pageIncludesLabels(page, store.labels.bannedSeller, baseOptions)
     ) {
-      logger.warn(Print.bannedSeller(link, store, true));
+      logger.warn(Print.bannedSeller(link, store));
       return false;
     }
   }
 
   if (store.labels.outOfStock) {
     if (await pageIncludesLabels(page, store.labels.outOfStock, baseOptions)) {
-      logger.info(Print.outOfStock(link, store, true));
+      logger.info(Print.outOfStock(link, store));
       return false;
     }
   }
@@ -444,7 +444,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     link.price = await getPrice(page, store.labels.maxPrice, baseOptions);
 
     if (link.price && link.price > maxPrice && maxPrice > 0) {
-      logger.info(Print.maxPrice(link, store, maxPrice, true));
+      logger.info(Print.maxPrice(link, store, maxPrice));
       return false;
     }
   }
@@ -457,7 +457,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     };
 
     if (!(await pageIncludesLabels(page, link.labels.inStock, options))) {
-      logger.info(Print.outOfStock(link, store, true));
+      logger.info(Print.outOfStock(link, store));
       return false;
     }
   }
@@ -470,7 +470,7 @@ async function lookupCardInStock(store: Store, page: Page, link: Link) {
     };
 
     if (!(await pageIncludesLabels(page, store.labels.inStock, options))) {
-      logger.info(Print.outOfStock(link, store, true));
+      logger.info(Print.outOfStock(link, store));
       return false;
     }
   }
@@ -525,7 +525,7 @@ async function runCaptchaDeterrent(browser: Browser, store: Store, page: Page) {
 
     if (!isStatusCodeInRange(statusCode, successStatusCodes)) {
       logger.warn(
-        `✖ [${store.name}] - Failed to navigate to anti-captcha target: ${link.url}`
+        `[${store.name}] - Failed to navigate to anti-captcha target: ${link.url}`
       );
     }
   }

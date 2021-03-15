@@ -9,7 +9,7 @@ let client: MqttClient.Client;
 if (mqtt.broker) {
   if (checkInsecureUsage(mqtt.password, mqtt.broker)) {
     logger.warn(
-      '✖ Insecure transport of password - Only use credentials with MQTT brokers on private networks.'
+      'Insecure transport of password - Only use credentials with MQTT brokers on private networks.'
     );
   } else {
     const clientOptions: IClientOptions = {
@@ -27,7 +27,7 @@ if (mqtt.broker) {
 
 export function sendMqttMessage(link: Link, store: Store) {
   if (client) {
-    logger.debug('↗ sending mqtt message');
+    logger.debug('sending mqtt message');
 
     (async () => {
       const givenUrl = link.cartUrl ? link.cartUrl : link.url;
@@ -43,9 +43,9 @@ export function sendMqttMessage(link: Link, store: Store) {
 
       try {
         client.publish(topic, message, pubOptions);
-        logger.info('✔ mqtt message sent');
+        logger.info('mqtt message sent');
       } catch (error: unknown) {
-        logger.error("✖ couldn't send mqtt message", error);
+        logger.error("couldn't send mqtt message", error);
       }
     })();
   }

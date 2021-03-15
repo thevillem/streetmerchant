@@ -8,7 +8,7 @@ const web = new WebClient(token);
 
 export function sendSlackMessage(link: Link, store: Store) {
   if (channel && token) {
-    logger.debug('↗ sending slack message');
+    logger.debug('sending slack message');
 
     (async () => {
       const givenUrl = link.cartUrl ? link.cartUrl : link.url;
@@ -20,13 +20,13 @@ export function sendSlackMessage(link: Link, store: Store) {
         });
 
         if (!result.ok) {
-          logger.error("✖ couldn't send slack message", result);
+          logger.error("couldn't send slack message", result);
           return;
         }
 
-        logger.info('✔ slack message sent');
+        logger.info('slack message sent');
       } catch (error: unknown) {
-        logger.error("✖ couldn't send slack message", error);
+        logger.error("couldn't send slack message", error);
       }
     })();
   }

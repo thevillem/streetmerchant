@@ -18,7 +18,7 @@ if (streamlabs.accessToken && streamlabs.type) {
 
 export function sendStreamLabsAlert(link: Link, store: Store) {
   if (requestParams) {
-    logger.debug('↗ sending StreamLabs alert');
+    logger.debug('sending StreamLabs alert');
 
     (async () => {
       const message = `${Print.inStock(link, store)}`;
@@ -33,9 +33,9 @@ export function sendStreamLabsAlert(link: Link, store: Store) {
         const json = await response.json();
         if (!json.success) throw Error(JSON.stringify(json));
 
-        logger.info('✔ StreamLabs alert sent');
+        logger.info('StreamLabs alert sent');
       } catch (error: unknown) {
-        logger.error("✖ couldn't send StreamLabs alert", error);
+        logger.error("couldn't send StreamLabs alert", error);
       }
     })();
   }
