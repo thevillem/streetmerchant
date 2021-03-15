@@ -29,20 +29,3 @@ jobs:
         run: npm run compile
       - name: Run linter
         run: npm run lint
-  build-docker:
-    name: Build Docker image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Run paths filter
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            build:
-              - 'Dockerfile'
-              - 'package*.json'
-      - name: Build Docker image
-        if: steps.filter.outputs.build == 'true'
-        run: docker build .
