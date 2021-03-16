@@ -1,12 +1,15 @@
-name: cd
+name: publish
 on:
   push:
     branches:
       - main
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -18,9 +21,6 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Git checkout
-        uses: thevillem/streetmerchant@main
-        
       - name: Build, tag, and push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
