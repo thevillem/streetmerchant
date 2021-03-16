@@ -14,7 +14,8 @@ The format is one proxy per line with the following structure:
 Supported protocols are `http` and `socks5`.
 
 Valid examples include:
-- `socks5://1.2.3.4:3180`
-- `socks5://abcd:efgh@1.2.3.4:5678`
-- `http://1.2.3.4:80`
-- `http://abcd:efgh@1.2.3.4:8080`
+
+-   `socks5://1.2.3.4:3180`
+-   `socks5://abcd:efgh@1.2.3.4:5678`
+-   `http://1.2.3.4:80`
+-   `http://abcd:efgh@1.2.3.4:8080`

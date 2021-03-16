@@ -4,7 +4,6 @@ about: Report a bug for this project
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ## Expected Behavior
@@ -22,10 +21,12 @@ assignees: ''
 
 ## Environment
 
-- OS:
+-   OS:
 
 <!-- Put your dotenv within backticks below. Be sure to remove any secrets/passwords. -->
+
 ```dotenv
+
 ```
 
 ## Logs

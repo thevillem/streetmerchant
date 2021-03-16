@@ -39,4 +39,4 @@ sudo codesign --force --deep --sign - ./node_modules/puppeteer/.local-chromium/m
 ```
 
 ???+ tip
-    The `mac-800071` may be different on your machine, so I would start from `./node_modules/puppeteer/.local-chromium` and auto complete from there.
+The `mac-800071` may be different on your machine, so I would start from `./node_modules/puppeteer/.local-chromium` and auto complete from there.

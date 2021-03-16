@@ -126,7 +126,10 @@ export async function getPrice(
 
   if (priceString) {
     const price = Number.parseFloat(
-      priceString.replace(/\\.|\\,/g, '').match(/\d+/g)!.join('.') // eslint-disable-line
+      priceString
+        .replace(/\\.|\\,/g, '')
+        .match(/\d+/g)!
+        .join('.') // eslint-disable-line
     );
 
     logger.debug('received price', price);

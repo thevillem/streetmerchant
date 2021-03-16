@@ -45,9 +45,7 @@ export async function processBackoffDelay(
   }
 
   const backoffTime = backoff.time;
-  logger.debug(
-    Print.backoff(link, store, {delay: backoffTime, statusCode})
-  );
+  logger.debug(Print.backoff(link, store, {delay: backoffTime, statusCode}));
 
   await delay(backoff.time);
 

@@ -13,10 +13,10 @@ if (phone.number.length > 0 && (!email.username || !email.password)) {
 }
 
 if (phone.carrier.length !== phone.number.length) {
-  logger.warn(
-    'the number of carriers must match the number of phone numbers',
-    {carrier: phone.carrier, number: phone.number}
-  );
+  logger.warn('the number of carriers must match the number of phone numbers', {
+    carrier: phone.carrier,
+    number: phone.number,
+  });
 }
 
 export function sendSms(link: Link, store: Store) {

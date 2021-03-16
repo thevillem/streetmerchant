@@ -30,8 +30,8 @@ export const logger = winston.createLogger({
     new WinstonCloudWatch({
       logGroupName: `${config.aws.logGroupName}`,
       logStreamName: `${aws_log_stream}`,
-      awsRegion: `${config.aws.awsRegion}`
-    })
+      awsRegion: `${config.aws.awsRegion}`,
+    }),
   ],
 });
 
@@ -45,15 +45,8 @@ export const Print = {
       parameters.statusCode
     } delay=${parameters.delay}`;
   },
-  badStatusCode(
-    link: Link,
-    store: Store,
-    statusCode: number,
-  ): string {
-    return `${buildProductString(
-      link,
-      store
-    )} STATUS CODE ERROR ${statusCode}`;
+  badStatusCode(link: Link, store: Store, statusCode: number): string {
+    return `${buildProductString(link, store)} STATUS CODE ERROR ${statusCode}`;
   },
   bannedSeller(link: Link, store: Store): string {
     return `${buildProductString(link, store)} BANNED SELLER`;
@@ -74,21 +67,14 @@ export const Print = {
     return `${productString}`;
   },
   inStockWaiting(link: Link, store: Store): string {
-
     return `${buildProductString(link, store)} IN STOCK, WAITING`;
   },
-  maxPrice(
-    link: Link,
-    store: Store,
-    maxPrice: number
-  ): string {
-    return `${buildProductString(link, store)} PRICE ${link.price} EXCEEDS LIMIT ${maxPrice}`;
+  maxPrice(link: Link, store: Store, maxPrice: number): string {
+    return `${buildProductString(link, store)} PRICE ${
+      link.price
+    } EXCEEDS LIMIT ${maxPrice}`;
   },
-  message(
-    message: string,
-    topic: string,
-    store: Store
-  ): string {
+  message(message: string, topic: string, store: Store): string {
     return `${buildSetupString(topic, store)} ${message}`;
   },
   noResponse(link: Link, store: Store): string {
@@ -107,14 +93,14 @@ export const Print = {
     return `${buildProductString(link, store)} RATE LIMIT EXCEEDED`;
   },
   recursionLimit(link: Link, store: Store): string {
-    return `${buildProductString(link, store)} CLOUDFLARE RETRY LIMIT REACHED, ABORT`;
+    return `${buildProductString(
+      link,
+      store
+    )} CLOUDFLARE RETRY LIMIT REACHED, ABORT`;
   },
 };
 
-function buildSetupString(
-  topic: string,
-  store: Store,
-): string {
+function buildSetupString(topic: string, store: Store): string {
   return `[${store.name}] [setup (${topic})]`;
 }
 

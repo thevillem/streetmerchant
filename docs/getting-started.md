@@ -4,15 +4,15 @@ You do not need any computer skills, smarts, or anything of that nature. You are
 
 ## Prerequisites
 
-- [git](https://git-scm.com/)
-- Either [Node.js 15](https://nodejs.org/en/) or [Docker (1.13.0+)](https://docs.docker.com/get-docker/) (advanced users)
+-   [git](https://git-scm.com/)
+-   Either [Node.js 15](https://nodejs.org/en/) or [Docker (1.13.0+)](https://docs.docker.com/get-docker/) (advanced users)
 
 ## Using Node.js
 
-| Reference | Note |
-|:---:|---|
-| tag | Example, `v1.0.0`; stable |
-| `main` | Latest HEAD; not tagged, could be unstable |
+| Reference | Note                                       |
+| :-------: | ------------------------------------------ |
+|    tag    | Example, `v1.0.0`; stable                  |
+|  `main`   | Latest HEAD; not tagged, could be unstable |
 
 1. Download [Node.js 15](https://nodejs.org/en/)
 1. Clone this project `git clone https://github.com/jef/streetmerchant.git`.
@@ -26,15 +26,15 @@ You do not need any computer skills, smarts, or anything of that nature. You are
 At any point you want the program to stop, use ++ctrl+c++.
 
 ???+ tip
-    Community based help can also be found on the [wiki](https://github.com/jef/streetmerchant/wiki). Feel free to check that out if you're having problems running. If you're still having problems running, you're probably not the first. Make some searches through the [GitHub issues](https://github.com/jef/streetmerchant/issues) before making one.
+Community based help can also be found on the [wiki](https://github.com/jef/streetmerchant/wiki). Feel free to check that out if you're having problems running. If you're still having problems running, you're probably not the first. Make some searches through the [GitHub issues](https://github.com/jef/streetmerchant/issues) before making one.
 
 ## Using Docker
 
 Available via GitHub Container Registry.
 
-| Tag | Note |
-|:---:|---|
-| `latest` | Latest release; stable |
+|    Tag    | Note                                                    |
+| :-------: | ------------------------------------------------------- |
+| `latest`  | Latest release; stable                                  |
 | `nightly` | Latest HEAD each day at midnight UTC; could be unstable |
 
 ```sh
@@ -56,7 +56,7 @@ See [Developing in docker](#developing-in-docker) for more information
 To customize streetmerchant, make a copy of `dotenv-example` as `dotenv` and make any changes to your liking. View [Reference](reference/application.md) for more information on variables and their usage.
 
 ???+ tip
-    All environment variables are optional.
+All environment variables are optional.
 
 ## For developers
 
@@ -70,11 +70,11 @@ Use `npm run lint` to see any linting uses and `npm run fix` to automatically fi
 
 #### Prerequisites
 
-- [Docker (1.13.0+)](https://docs.docker.com/get-docker/)
-- [GNU Make](https://www.gnu.org/software/make/)
-    - Optional, but increases quality of life
-- [Docker Compose](https://docs.docker.com/compose/install/)
-    - Depending on your system, you may already have this. Check before installing.
+-   [Docker (1.13.0+)](https://docs.docker.com/get-docker/)
+-   [GNU Make](https://www.gnu.org/software/make/)
+    -   Optional, but increases quality of life
+-   [Docker Compose](https://docs.docker.com/compose/install/)
+    -   Depending on your system, you may already have this. Check before installing.
 
 #### Starting with `docker-compose`
 
@@ -95,7 +95,7 @@ docker-compose down
 ```
 
 ???+ note
-    If you are using `WEB_PORT`, then you will need to add the following to docker-compose:
+If you are using `WEB_PORT`, then you will need to add the following to docker-compose:
 
     ```
     ports:

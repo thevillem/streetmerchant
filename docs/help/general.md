@@ -3,7 +3,7 @@
 ## Adding a store
 
 ???+ note
-    This is subject to change in the future
+This is subject to change in the future
 
 In the following examples, I will be using "NewStore" as the store I'm wanting to add.
 
@@ -118,7 +118,7 @@ Here's an example:
 And voila! You're done! If you'd like to contribute to the project, feel free to create a [Pull Request](https://github.com/jef/streetmerchant/compare)! Don't forget to add the store (and brand, model, and series if you added) to the `README.md`.
 
 ???+ tip
-    Here's an [example](https://github.com/jef/streetmerchant/commit/af96c5f2e808af7496f3c3299e4cf173105de48b). If you'd like to include a max price, you can add `MAX_PRICE_SERIES_NEW_SERIES` to the above instead of the `-1`.
+Here's an [example](https://github.com/jef/streetmerchant/commit/af96c5f2e808af7496f3c3299e4cf173105de48b). If you'd like to include a max price, you can add `MAX_PRICE_SERIES_NEW_SERIES` to the above instead of the `-1`.
 
 ## Creating a Discord webhook
 
