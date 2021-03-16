@@ -23,5 +23,6 @@ jobs:
           ECR_REPOSITORY: streetmerchant
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          ls -al
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
