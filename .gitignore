@@ -9,6 +9,7 @@ node_modules/
 dotenv
 *.proxies
 success-*.png
+docker-compose.yml
 
 *.wav
 *.mp3
