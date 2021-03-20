@@ -1,10 +1,7 @@
 version: '3.0'
 services:
   streetmerchant:
-    image: ghcr.io/jef/streetmerchant:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: 035151873991.dkr.ecr.us-east-1.amazonaws.com/streetmerchant:latest
     container_name: streetmerchant
     restart: unless-stopped
     env_file:
